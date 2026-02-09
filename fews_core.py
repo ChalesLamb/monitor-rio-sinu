@@ -7,8 +7,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 URL = "https://fews.ideam.gov.co/visorfews/data/series/jsonH/0013067020.json"
 
-ALERTA_ROJA = 6.5
-ALERTA_NARANJA = 6.0
+ALERTA_ROJA = 5.9
+ALERTA_NARANJA = 5.4
 
 def cargar_json():
     r = requests.get(URL, timeout=15, verify=False)
