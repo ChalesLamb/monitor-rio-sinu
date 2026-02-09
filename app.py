@@ -106,6 +106,12 @@ if st.button("🔄 Actualizar datos"):
 df_nivel, df_pobs, fuente = obtener_datos()
 estado = estado_actual(df_nivel)
 
+# ================= INFO ACTUAL =================
+st.subheader(
+    f"📅 Datos actualizados: {df_nivel['fecha'].iloc[-1].strftime('%Y-%m-%d %H:%M')} "
+    f"| Fuente: FEWS - IDEAM"
+)
+
 # ================= COLORES SEGÚN ESTADO =================
 if es_oscuro():
     OK = "#22c55e"
