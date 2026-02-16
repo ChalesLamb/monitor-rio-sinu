@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 import matplotlib.pyplot as plt
-from fews_core import obtener_datos, estado_actual, ALERTA_ROJA, ALERTA_NARANJA
+from fews_core import obtener_datos, estado_actual, ALERTA_ROJA, ALERTA_NARANJA, ALERTA_AMARILLA
 
 # ================= CONFIG STREAMLIT =================
 st.set_page_config(
@@ -115,10 +115,12 @@ st.subheader(
 # ================= COLORES SEGÚN ESTADO =================
 if es_oscuro():
     OK = "#22c55e"
+    ALERT = "#dfea08"
     WARN = "#facc15"
     DANGER = "#ef4444"
 else:
     OK = "#16a34a"
+    ALERT = "#ead008"
     WARN = "#ca8a04"
     DANGER = "#dc2626"
 
@@ -128,6 +130,8 @@ if "ROJA" in estado["alerta"]:
     BTN_HOVER = "#b91c1c"
 elif "NARANJA" in estado["alerta"]:
     COLOR_ESTADO = WARN
+elif "AMARILLA" in estado["alerta"]:
+    COLOR_ESTADO = ALERT
 else:
     COLOR_ESTADO = OK
 
@@ -224,6 +228,8 @@ ax.plot(
 
 ax.axhline(ALERTA_ROJA, linestyle="--", color="red", label="Alerta Roja")
 ax.axhline(ALERTA_NARANJA, linestyle="--", color="orange", label="Alerta Naranja")
+ax.axhline(ALERTA_AMARILLA, linestyle="--", color="yellow", label="Alerta Amarilla")
+
 
 ultimo = df_nivel.iloc[-1]
 ax.annotate(

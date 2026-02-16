@@ -9,6 +9,7 @@ URL = "https://fews.ideam.gov.co/visorfews/data/series/jsonH/0013067020.json"
 
 ALERTA_ROJA = 5.9
 ALERTA_NARANJA = 5.4
+ALERTA_AMARILLA = 4.8
 
 def cargar_json():
     r = requests.get(URL, timeout=15, verify=False)
@@ -60,6 +61,8 @@ def estado_actual(df):
         alerta = "🔴 ALERTA ROJA"
     elif nivel >= ALERTA_NARANJA:
         alerta = "🟠 ALERTA NARANJA"
+    elif nivel >= ALERTA_AMARILLA:
+        alerta = "🟡 ALERTA AMARILLA"
     else:
         alerta = "🟢 NORMAL"
 
